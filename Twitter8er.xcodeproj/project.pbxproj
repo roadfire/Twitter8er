@@ -14,6 +14,7 @@
 		03449D5219CC7FD80018C612 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03449D5119CC7FD80018C612 /* Images.xcassets */; };
 		03449D5519CC7FD80018C612 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03449D5319CC7FD80018C612 /* LaunchScreen.xib */; };
 		03449D6119CC7FD90018C612 /* Twitter8erTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03449D6019CC7FD90018C612 /* Twitter8erTests.swift */; };
+		035B0B3819CCCD5400599877 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B0B3719CCCD5400599877 /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		03449D5A19CC7FD90018C612 /* Twitter8erTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Twitter8erTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03449D5F19CC7FD90018C612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03449D6019CC7FD90018C612 /* Twitter8erTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twitter8erTests.swift; sourceTree = "<group>"; };
+		035B0B3719CCCD5400599877 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				03449D5119CC7FD80018C612 /* Images.xcassets */,
 				03449D5319CC7FD80018C612 /* LaunchScreen.xib */,
 				03449D4619CC7FD80018C612 /* Supporting Files */,
+				035B0B3719CCCD5400599877 /* TweetTableViewCell.swift */,
 			);
 			path = Twitter8er;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				03449D4D19CC7FD80018C612 /* SecondViewController.swift in Sources */,
 				03449D4919CC7FD80018C612 /* AppDelegate.swift in Sources */,
 				03449D4B19CC7FD80018C612 /* FirstViewController.swift in Sources */,
+				035B0B3819CCCD5400599877 /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +413,7 @@
 				03449D6619CC7FD90018C612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03449D6719CC7FD90018C612 /* Build configuration list for PBXNativeTarget "Twitter8erTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				03449D6919CC7FD90018C612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
