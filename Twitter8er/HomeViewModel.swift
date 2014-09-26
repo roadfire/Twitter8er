@@ -13,6 +13,7 @@ import Social
 class HomeViewModel {
     
     let accountStore = ACAccountStore()
+    var tweets = [NSDictionary]()
     
     func fetchTweets(success: () -> ()) {
         // get the tweets
@@ -21,12 +22,40 @@ class HomeViewModel {
             self.accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted, error) -> Void in
                 if (granted) {
                     self.loadTweetsForAccountType(accountType) { (tweets) -> Void in
-                        
+                        self.tweets = tweets
+                        success()
                     }
+                } else {
+                    success()
                 }
             }
+        } else {
+            success()
         }
-        
+    }
+    
+    func numberOfSections() -> Int {
+        return 1
+    }
+    
+    func numberOfItemsInSection(section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tweetForRowAtIndexPath(indexPath: NSIndexPath) -> String {
+        let tweetDict = tweets[indexPath.row] as NSDictionary
+        return tweetDict.valueForKeyPath("text") as String
+    }
+    
+    func usernameForRowAtIndexPath(indexPath: NSIndexPath) -> String {
+        let tweetDict = tweets[indexPath.row] as NSDictionary
+        let screenName = tweetDict.valueForKeyPath("user.screen_name") as String
+        return "@\(screenName)"
+    }
+    
+    func nameForRowAtIndexPath(indexPath: NSIndexPath) -> String {
+        let tweetDict = tweets[indexPath.row] as NSDictionary
+        return tweetDict.valueForKeyPath("user.name") as String
     }
     
     func userHasAccessToTwitter() -> Bool {
@@ -49,7 +78,7 @@ class HomeViewModel {
                 case 200...299:
                     var jsonError: NSError?
                     if let json = NSJSONSerialization.JSONObjectWithData(unwrappedData, options: nil, error: &jsonError) as? [NSDictionary] {
-                        if jsonError != nil {
+                        if jsonError == nil {
                             completion(tweets: json)
                         }
                     }

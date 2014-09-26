@@ -24,17 +24,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfItemsInSection(section)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as TweetTableViewCell
         
+        configureCell(cell, forRowAtIndexPath: indexPath)
+        
         return cell
+    }
+    
+    func configureCell(cell: TweetTableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.tweetLabel.text = viewModel.tweetForRowAtIndexPath(indexPath)
+        cell.usernameLabel.text = viewModel.usernameForRowAtIndexPath(indexPath)
+        cell.nameLabel.text = viewModel.nameForRowAtIndexPath(indexPath)
     }
 }
 
