@@ -12,23 +12,38 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet var tableView: UITableView!
     let viewModel = HomeViewModel()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refresh()
+        self.addRefreshControl()
+    }
+    
+    func addRefreshControl() {
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    func refresh() {
         viewModel.fetchTweets {
             dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
 
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItemsInSection(section)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
