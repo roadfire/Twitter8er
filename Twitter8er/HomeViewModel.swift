@@ -31,6 +31,7 @@ class HomeViewModel {
                 }
             }
         } else {
+            println("Can't connect to Twitter. Do you have a Twitter account set up in Settings?")
             success()
         }
     }
