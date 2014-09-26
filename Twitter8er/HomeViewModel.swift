@@ -26,6 +26,7 @@ class HomeViewModel {
                         success()
                     }
                 } else {
+                    println("permission not granted")
                     success()
                 }
             }
@@ -75,7 +76,7 @@ class HomeViewModel {
     func loadTweetsForAccountType(accountType: ACAccountType, completion:(tweets: [NSDictionary]) -> Void) {
         let twitterAccounts = self.accountStore.accountsWithAccountType(accountType) as [ACAccount]
         let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
-        let params = ["count": "100", "exclude_replies": "false"]
+        let params = ["count": "50", "exclude_replies": "false"]
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: url,
@@ -93,6 +94,7 @@ class HomeViewModel {
                         }
                     }
                 default:
+                    println("unexpected status code: \(response.statusCode)")
                     return
                 }
             }
