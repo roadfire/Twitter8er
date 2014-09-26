@@ -9,8 +9,8 @@
 import UIKit
 
 class TweetTableViewCell: UITableViewCell {
-    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var tweetLabel: UILabel!
+    @IBOutlet var profileImageView: UIImageView!
 }

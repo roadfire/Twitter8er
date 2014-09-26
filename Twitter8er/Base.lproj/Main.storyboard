@@ -35,58 +35,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-2i-8tY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="p6Y-2i-8tY">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="113" id="Aye-E1-Y1Y" customClass="TweetTableViewCell" customModule="Twitter8er" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="110" id="Aye-E1-Y1Y" customClass="TweetTableViewCell" customModule="Twitter8er" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aye-E1-Y1Y" id="eDE-gg-jnP">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="250" tableViewCell="Aye-E1-Y1Y" id="eDE-gg-jnP">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="pOq-dm-xvK">
-                                                    <rect key="frame" x="8" y="8" width="100" height="100"/>
+                                                    <rect key="frame" x="8" y="8" width="50" height="50"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="1WO-IA-VvI"/>
                                                         <constraint firstAttribute="width" secondItem="pOq-dm-xvK" secondAttribute="height" multiplier="1:1" id="Oxc-ba-XUf"/>
+                                                        <constraint firstAttribute="width" constant="50" id="bFB-NZ-5yp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Josh Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yao-Rt-jo6">
-                                                    <rect key="frame" x="116" y="8" width="89" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Josh Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yao-Rt-jo6">
+                                                    <rect key="frame" x="66" y="8" width="86" height="22"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="@jtbrown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-6g-EUH">
-                                                    <rect key="frame" x="213" y="10" width="60" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" text="Swift: The difference between a closure and an @autoclosure (Xcode 6 GM) | sketchyTech buff.ly/XMHYnU" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEM-Qr-25q">
+                                                    <rect key="frame" x="66" y="50" width="518" height="48"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Swift: The difference between a closure and an @autoclosure (Xcode 6 GM) | sketchyTech buff.ly/XMHYnU" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEM-Qr-25q">
-                                                    <rect key="frame" x="116" y="36" width="468" height="41"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="@jtbrown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-6g-EUH">
+                                                    <rect key="frame" x="66" y="30" width="60" height="20"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="pOq-dm-xvK" secondAttribute="bottom" priority="750" id="5xZ-ac-tqw"/>
                                                 <constraint firstItem="pOq-dm-xvK" firstAttribute="leading" secondItem="eDE-gg-jnP" secondAttribute="leadingMargin" id="6xO-8e-xbY"/>
-                                                <constraint firstItem="tEM-Qr-25q" firstAttribute="top" secondItem="Yao-Rt-jo6" secondAttribute="bottom" constant="8" symbolic="YES" id="F7h-kI-qk6"/>
                                                 <constraint firstItem="pOq-dm-xvK" firstAttribute="top" secondItem="eDE-gg-jnP" secondAttribute="topMargin" id="I3B-5p-Ce4"/>
+                                                <constraint firstItem="kMA-6g-EUH" firstAttribute="top" secondItem="Yao-Rt-jo6" secondAttribute="bottom" id="SkZ-3j-HmZ"/>
                                                 <constraint firstItem="tEM-Qr-25q" firstAttribute="leading" secondItem="eDE-gg-jnP" secondAttribute="leadingMargin" constant="78" id="WQT-Fp-d0E"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="tEM-Qr-25q" secondAttribute="trailing" constant="8" id="YdB-4f-Euf"/>
+                                                <constraint firstItem="kMA-6g-EUH" firstAttribute="leading" secondItem="pOq-dm-xvK" secondAttribute="trailing" constant="8" id="ZXS-Ek-8GM"/>
+                                                <constraint firstItem="kMA-6g-EUH" firstAttribute="bottom" secondItem="tEM-Qr-25q" secondAttribute="top" id="a8A-y5-ygT"/>
                                                 <constraint firstItem="Yao-Rt-jo6" firstAttribute="leading" secondItem="eDE-gg-jnP" secondAttribute="leadingMargin" constant="78" id="btD-cQ-Wml"/>
                                                 <constraint firstItem="tEM-Qr-25q" firstAttribute="top" secondItem="Yao-Rt-jo6" secondAttribute="bottom" constant="11" id="dcY-i0-JrX"/>
                                                 <constraint firstItem="tEM-Qr-25q" firstAttribute="leading" secondItem="pOq-dm-xvK" secondAttribute="trailing" constant="8" id="fic-QS-dqF"/>
                                                 <constraint firstItem="Yao-Rt-jo6" firstAttribute="leading" secondItem="pOq-dm-xvK" secondAttribute="trailing" constant="8" id="h2D-1K-kUq"/>
                                                 <constraint firstItem="Yao-Rt-jo6" firstAttribute="top" secondItem="eDE-gg-jnP" secondAttribute="topMargin" id="hbM-SF-z3K"/>
                                                 <constraint firstItem="Yao-Rt-jo6" firstAttribute="baseline" secondItem="kMA-6g-EUH" secondAttribute="baseline" id="qZq-J3-syd"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="tEM-Qr-25q" secondAttribute="bottom" constant="11" id="tv8-zs-kxL"/>
-                                                <constraint firstItem="kMA-6g-EUH" firstAttribute="leading" secondItem="Yao-Rt-jo6" secondAttribute="trailing" constant="8" id="yyS-g6-3pn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="tEM-Qr-25q" secondAttribute="bottom" constant="3" id="tv8-zs-kxL"/>
+                                                <constraint firstItem="kMA-6g-EUH" firstAttribute="leading" secondItem="Yao-Rt-jo6" secondAttribute="leading" id="yyS-g6-3pn"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="btD-cQ-Wml"/>
+                                                    <exclude reference="qZq-J3-syd"/>
+                                                    <exclude reference="yyS-g6-3pn"/>
                                                     <exclude reference="WQT-Fp-d0E"/>
                                                     <exclude reference="dcY-i0-JrX"/>
                                                 </mask>
@@ -94,6 +101,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="Yao-Rt-jo6" id="rLU-Hf-K6N"/>
+                                            <outlet property="profileImageView" destination="pOq-dm-xvK" id="ghV-Ao-ow7"/>
                                             <outlet property="tweetLabel" destination="tEM-Qr-25q" id="NnL-lX-Ri1"/>
                                             <outlet property="usernameLabel" destination="kMA-6g-EUH" id="sm3-xe-Kmn"/>
                                         </connections>
@@ -121,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="-333"/>
+            <point key="canvasLocation" x="1491" y="-334"/>
         </scene>
         <!--Messages-->
         <scene sceneID="wg7-f3-ORb">

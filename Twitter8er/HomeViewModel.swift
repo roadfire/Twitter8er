@@ -58,6 +58,16 @@ class HomeViewModel {
         return tweetDict.valueForKeyPath("user.name") as String
     }
     
+    func fetchImageForRowAtIndexPath(indexPath: NSIndexPath, success:(image: UIImage) -> ()) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let urlString = self.urlStringForImageAtIndexPath(indexPath)
+            let imageURL = NSURL(string: urlString)
+            let imageData = NSData(contentsOfURL: imageURL)
+            let image = UIImage(data: imageData)
+            success(image: image)
+        }
+    }
+    
     func userHasAccessToTwitter() -> Bool {
         return SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
     }
@@ -87,5 +97,11 @@ class HomeViewModel {
                 }
             }
         }
+    }
+    
+    private func urlStringForImageAtIndexPath(indexPath: NSIndexPath) -> String {
+        let tweetDict = tweets[indexPath.row] as NSDictionary
+        let urlString = tweetDict.valueForKeyPath("user.profile_image_url") as String
+        return urlString.stringByReplacingOccurrencesOfString("_normal", withString: "")
     }
 }

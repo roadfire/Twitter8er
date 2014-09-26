@@ -58,6 +58,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.tweetLabel.text = viewModel.tweetForRowAtIndexPath(indexPath)
         cell.usernameLabel.text = viewModel.usernameForRowAtIndexPath(indexPath)
         cell.nameLabel.text = viewModel.nameForRowAtIndexPath(indexPath)
+        
+        viewModel.fetchImageForRowAtIndexPath(indexPath, success: { (image) -> () in
+            dispatch_async(dispatch_get_main_queue()) {
+                if let updateCell = self.tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell {
+                    updateCell.profileImageView.image = image
+                }
+            }
+        })
+        
+        cell.profileImageView.image = UIImage(named: "placeholder")
+        cell.profileImageView.contentMode = .ScaleAspectFill
     }
 }
 
