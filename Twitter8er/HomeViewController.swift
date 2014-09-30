@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     self.refreshControl.endRefreshing()
                 }
             case .Failure(let error):
-                let alert = UIAlertController(title: error, message: nil, preferredStyle: .Alert)
+                let alert = UIAlertController(title: "Can't connect to Twitter.", message: error, preferredStyle: .Alert)
                 let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
                 alert.addAction(action)
                 self.presentViewController(alert, animated: true, completion: nil)

@@ -10,16 +10,8 @@ import Foundation
 import Accounts
 import Social
 
-final class Box<A> {
-    let value: A
-
-    init(_ value: A) {
-        self.value = value
-    }
-}
-
 enum Result<A> {
-    case Success(Box<A>)
+    case Success(@autoclosure() -> A)
     case Failure(String)
 }
 
@@ -33,15 +25,15 @@ class HomeViewModel {
             let accountType = self.accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
             self.accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted, error) -> Void in
                 if (granted) {
-                    self.loadTweetsForAccountType(accountType) { (tweets) -> Void in
-                        completion(.Success(Box(tweets)))
+                    self.loadTweetsForAccountType(accountType) { (result) -> Void in
+                        completion(result)
                     }
                 } else {
-                    completion(.Failure("Can't connect to Twitter. Make sure you've given Twitter8er access to your Twitter account."))
+                    completion(.Failure("Make sure you've given Twitter8er access to your Twitter account."))
                 }
             }
         } else {
-            completion(.Failure("Can't connect to Twitter. Check to make sure you have a Twitter account set up in Settings."))
+            completion(.Failure("Check to make sure you have a Twitter account set up in Settings."))
         }
     }
     
@@ -49,10 +41,10 @@ class HomeViewModel {
         return SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
     }
     
-    func loadTweetsForAccountType(accountType: ACAccountType, completion:(tweets: [NSDictionary]) -> Void) {
+    func loadTweetsForAccountType(accountType: ACAccountType, completion: (Result<[NSDictionary]>) -> ()) {
         let twitterAccounts = self.accountStore.accountsWithAccountType(accountType) as [ACAccount]
         let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
-        let params = ["count": "50", "exclude_replies": "false"]
+        let params = ["count": "10", "exclude_replies": "false"]
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: url,
@@ -67,7 +59,7 @@ class HomeViewModel {
                     if let json = NSJSONSerialization.JSONObjectWithData(unwrappedData, options: nil, error: &jsonError) as? [NSDictionary] {
                         if jsonError == nil {
                             self.tweets = json
-                            completion(tweets: json)
+                            completion(.Success(json))
                         }
                     }
                 default:
