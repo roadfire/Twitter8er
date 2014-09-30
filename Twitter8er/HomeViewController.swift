@@ -26,10 +26,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func refresh() {
-        viewModel.fetchTweets {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
+        viewModel.fetchTweets { result in
+            switch result {
+            case .Success(let tweets):
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            case .Failure(let error):
+                let alert = UIAlertController(title: error, message: nil, preferredStyle: .Alert)
+                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
