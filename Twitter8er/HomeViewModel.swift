@@ -94,13 +94,15 @@ class HomeViewModel {
         return tweetDict.valueForKeyPath("user.name") as String
     }
     
-    func fetchImageForRowAtIndexPath(indexPath: NSIndexPath, success:(image: UIImage) -> ()) {
+    func fetchImageForRowAtIndexPath(indexPath: NSIndexPath, completion: (Result<UIImage>) -> ()) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let urlString = self.urlStringForImageAtIndexPath(indexPath)
             if let imageURL = NSURL(string: urlString) {
                 if let imageData = NSData(contentsOfURL: imageURL) {
                     if let image = UIImage(data: imageData) {
-                        success(image: image)
+                        completion(.Success(image))
+                    } else {
+                        completion(.Failure("Couldn't load image"))
                     }
                 }
             }

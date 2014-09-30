@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func refresh() {
         viewModel.fetchTweets { result in
             switch result {
-            case .Success(let tweets):
+            case .Success(_):
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
@@ -67,11 +67,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.usernameLabel.text = viewModel.usernameForRowAtIndexPath(indexPath)
         cell.nameLabel.text = viewModel.nameForRowAtIndexPath(indexPath)
         
-        viewModel.fetchImageForRowAtIndexPath(indexPath, success: { (image) -> () in
-            dispatch_async(dispatch_get_main_queue()) {
-                if let updateCell = self.tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell {
-                    updateCell.profileImageView.image = image
+        viewModel.fetchImageForRowAtIndexPath(indexPath, completion: { (result) -> () in
+            switch result {
+            case .Success(let image):
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let updateCell = self.tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell {
+                        updateCell.profileImageView.image = image()
+                    }
                 }
+            default:
+                break
             }
         })
         
